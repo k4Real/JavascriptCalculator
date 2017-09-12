@@ -1,0 +1,93 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 12, 2017, 10:12:47 AM
+    Author     : K4RELS
+
+- look for old calc font style
+12 cm length
+8 cm width
+
+screen: y- 2,3cm (1/5,65of length) , x 7cm 7/8 of width,
+font-size 1cm
+
+
+button width calc length 1/8
+
+buttons 1,5cm width, length 1cm 3/2 relationship
+x-distance between button 1/3 width button
+y-distance between button 5/18 width button
+
+
+ */
+ 
+ 
+ #wrapper {
+     
+   
+     
+      margin-top: 100px;
+     
+     
+ }
+
+ 
+ #calc {
+/*     3/4 relationship width/height */
+  
+   width: 400px;
+   height :530px;
+   margin : 0 auto;
+   border: black 3px solid ;
+     
+     
+ }
+ /********screen*********/
+ 
+ #outputScreen {
+     margin-top: 22px;
+     margin-bottom: 22px;
+     font-size: 44px ;
+    margin-left:22.08px ;
+   height:93.805px ;
+   width: 350px;
+     
+   border: black 3px solid ;
+ }
+ 
+ #outputText {
+     
+     
+   font-size: 44px ;
+   margin-right:22.08px;
+   margin-bottom: 22.08px;
+   text-align: right ;
+     
+     
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ /******** buttons*********/
+ 
+ 
+ .calcButtons,
+ .specialButtons,
+ .signButtons {
+   
+    width: 66.25px  ;
+    height: 44.167px ;    
+   margin-left:22.08px ; 
+   margin-bottom: 15px;
+     
+     
+ }
+ 
