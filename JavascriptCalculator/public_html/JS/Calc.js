@@ -5,6 +5,9 @@
  * 
  * double value = Double.parseDouble(text);
  * Storage for  Number
+ * 
+ * add Comments
+ * Check for duplicates
  */
 
 class Calculator {
@@ -182,28 +185,41 @@ $('#equalsSign').on('click', ()=>{
 });
 
 $('#dotSign').on('click', ()=>{
+    if( !myCalc.currentNumber.includes('.') ) {
   myCalc.addNumberOrDot(".");  
+    }
 });
 
 $('#multiSign').on('click', ()=>{
+    // to make sure the sign is only pressed once
+    if(myCalc.currentNumber !== '') {
   myCalc.multiplication();  
+    }
 });
 
 $('#divSign').on('click', ()=>{
+    if(myCalc.currentNumber !== '') {
   myCalc.division();  
+    }
 });
 
 
 $('#plusSign').on('click', ()=>{
+    if(myCalc.currentNumber !== '') {
   myCalc.addition();  
+    }
 });
 
 $('#subsSign').on('click', ()=>{
+    if(myCalc.currentNumber !== '') {
   myCalc.substraction();  
+    }
 });
 
 $('#moduloSign').on('click', ()=>{
-  myCalc.substraction();  
+    if(myCalc.currentNumber !== '') {
+  myCalc.moduloRest()(); 
+    }
 });
 
 /*********************/
