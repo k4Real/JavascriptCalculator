@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  * 
- * 
+ * double value = Double.parseDouble(text);
  * Storage for  Number
  */
 
@@ -11,35 +11,39 @@ class Calculator {
   
     constructor () {
 this.currentNumber = "" ;
-this.totalNumber ="" ;
-this.sign ="";
+this.totalNumber = [] ;
+this.sign =['+'];
                    }
     /********************************/
    addition() {
-       
-       this.sign="+";
-       
+     
+       this.sign.push("+");
+       this.totalNumber.push(this.currentNumber) ;
+       this.currentNumber = '';
    } 
    /**************************/
    substraction ()
    {
-     
-        this.sign="-";
-       
+        
+         this.sign.push("-");
+       this.totalNumber.push(this.currentNumber) ;
+       this.currentNumber = '';
    }
    /**********************/
    division ()
    {
-     
-        this.sign="/";
-       
+      
+         this.sign.push("/");
+       this.totalNumber.push(this.currentNumber) ;
+       this.currentNumber = '';
    }
    /*******************/
   multiplication()
    {
-      
-       this.sign="*"; 
        
+         this.sign.push("*");
+       this.totalNumber.push(this.currentNumber) ;
+       this.currentNumber = '';
    }
    
    
@@ -47,12 +51,15 @@ this.sign ="";
    moduloRest()
    {
       
-       this.sign="%"; 
-       
+       this.sign.push("%");
+       this.totalNumber.push(this.currentNumber) ;
+       this.currentNumber = '';
    }
    
    allClear (){
-       this.totalNumber="" ;
+       this.sign = ['+'];
+       this.totalNumber =[] ;
+        this.currentNumber="" ;
        
    }
     
@@ -62,16 +69,142 @@ this.sign ="";
       
   }  
   
-  addNumber(num){
+  addNumberOrDot(num){
       
-  this.currentNumber+=num;    
+  this.currentNumber +="" +num; 
+  
       
   }   
-  
+   calculate(){
+      let result = 0.0;
+      this.totalNumber.push(this.currentNumber) ;
+      console.log(myCalc.sign+" " +myCalc.totalNumber );
+      for ( let i=0; i<this.totalNumber.length;i++ ) {
+ 
+        switch (this.sign[i]){
+            
+            case "+":
+                
+             result += parseFloat(this.totalNumber[i])  ;
+             break;
+           
+            
+            case "-":
+           result -= parseFloat(this.totalNumber[i])  ;
+             break;
+            
+            case "*":
+            result *= parseFloat(this.totalNumber[i]) ;
+             break;
+            
+            
+             case "/":
+            result /= parseFloat(this.totalNumber[i]) ;
+             break;
+           
+            
+            case "%":
+           result %= parseFloat(this.totalNumber[i])  ;
+            
+        }
+        
+    }
+    
+    this.currentNumber= result;    
+     this.sign = ['+'];
+       this.totalNumber =[] ;   
+  } 
   
   
     
 }
 /*****************************/
 
-$()
+let myCalc = new Calculator();
+
+
+
+/********************************/
+$('#num0').on('click', ()=>{
+  myCalc.addNumberOrDot(0);  
+});
+$('#num1').on('click', ()=>{
+  myCalc.addNumberOrDot(1);  
+});
+$('#num2').on('click', ()=>{
+  myCalc.addNumberOrDot(2);  
+}) ;
+$('#num3').on('click', ()=>{
+  myCalc.addNumberOrDot(3);  
+});
+$('#num4').on('click', ()=>{
+  myCalc.addNumberOrDot(4);  
+});
+$('#num5').on('click', ()=>{
+  myCalc.addNumberOrDot(5);  
+});
+$('#num6').on('click', ()=>{
+  myCalc.addNumberOrDot(6);  
+});
+$('#num7').on('click', ()=>{
+  myCalc.addNumberOrDot(7);  
+}) ;
+$('#num8').on('click', ()=>{
+  myCalc.addNumberOrDot(8);  
+});
+$('#num9').on('click', ()=>{
+  myCalc.addNumberOrDot(9);  
+});
+
+
+
+$('#AC').on('click', ()=>{
+  myCalc.allClear(); 
+  document.getElementById("outputText").innerHTML = myCalc.currentNumber;  
+});
+$('#CE').on('click', ()=>{
+  myCalc.entityClear(); 
+  document.getElementById("outputText").innerHTML = myCalc.currentNumber;    
+});
+
+
+/*************Update   **********************/
+$('button').bind('click', ()=>{
+  document.getElementById("outputText").innerHTML = myCalc.currentNumber;  
+});
+
+/*********************************/
+
+$('#equalsSign').on('click', ()=>{
+  myCalc.calculate();  
+ document.getElementById("outputText").innerHTML = myCalc.currentNumber ;
+ 
+});
+
+$('#dotSign').on('click', ()=>{
+  myCalc.addNumberOrDot(".");  
+});
+
+$('#multiSign').on('click', ()=>{
+  myCalc.multiplication();  
+});
+
+$('#divSign').on('click', ()=>{
+  myCalc.division();  
+});
+
+
+$('#plusSign').on('click', ()=>{
+  myCalc.addition();  
+});
+
+$('#subsSign').on('click', ()=>{
+  myCalc.substraction();  
+});
+
+$('#moduloSign').on('click', ()=>{
+  myCalc.substraction();  
+});
+
+/*********************/
+
