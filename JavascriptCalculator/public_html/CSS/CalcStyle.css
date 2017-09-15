@@ -21,8 +21,21 @@ buttons 1,5cm width, length 1cm 3/2 relationship
 x-distance between button 1/3 width button
 y-distance between button 5/18 width button
 
-
+Skills Absolute positioning
  */
+ 
+ /******Imports***************/
+ 
+ @font-face {
+    font-family: digitalOld;
+    src: url(Digital.ttf);
+}
+ 
+ 
+ /***************************/
+ 
+ 
+ 
  
  
  #wrapper {
@@ -34,37 +47,65 @@ y-distance between button 5/18 width button
      
  }
 
+
  
  #calc {
 /*     3/4 relationship width/height */
-  
+position:relative ;
+z-index: 5;
+padding-top: 4px;
+   border-radius: 20px;
    width: 400px;
    height :530px;
-   margin : 0 auto;
-   border: black 3px solid ;
+   margin : 200px auto;
+  box-shadow:         8px 12px 9px rgba(50, 50, 50, 0.36);
+  background-color:#fefefa ;
      
      
  }
  /********screen*********/
  
  #outputScreen {
-     margin-top: 22px;
-     margin-bottom: 22px;
-     font-size: 44px ;
+     position:relative ;
+     margin-top: 30px;
+     margin-bottom: 62px;
+     background-color:#EAECD7;
+     border-radius: 15px;
     margin-left:22.08px ;
    height:93.805px ;
    width: 350px;
+ -webkit-box-shadow: inset 9px 9px 5px -1px rgba(0,0,0,0.24);
+-moz-box-shadow: inset 9px 9px 5px -1px rgba(0,0,0,0.24);
+box-shadow: inset 9px 9px 5px -1px rgba(0,0,0,0.24);
+    
+ }
+ 
+ 
+  #blueCircle {
+     position:absolute ;
+        z-index: -3 ;
+      height :700px ;
+      width :700px;
+      background-color: #1c9ff4;
+      border-radius: 50% ;   
+      top:130px;
+      left: 605px;
      
-   border: black 3px solid ;
  }
  
  #outputText {
      
-     
-   font-size: 44px ;
-   margin-right:22.08px;
-   margin-bottom: 22.08px;
-   text-align: right ;
+   line-height: 0;
+   max-width: 325px;
+   margin-top: 0;
+   font-size: 55px ;
+   position: absolute;
+   right: 10px ;
+   top:55px;    
+   
+   
+  
+   font-family:digitalOld ;
      
      
  }
@@ -82,12 +123,60 @@ y-distance between button 5/18 width button
  .calcButtons,
  .specialButtons,
  .signButtons {
-   
+   border: solid 0px;  /* to overwrite default styling */
     width: 66.25px  ;
     height: 44.167px ;    
-   margin-left:22.08px ; 
+   margin-left:27.08px ; 
    margin-bottom: 15px;
+   color:white ;
+   font-weight: bold;
+   font-size: 1.4em ;
+   border-top-left-radius: 5px;
+   border-top-right-radius:5px;
+   border-bottom-left-radius: 15px;
+   border-bottom-right-radius:15px;
+   float: left ;
+   outline: none ;
+ 
+box-shadow:         2px 3px 6px rgba(50, 50, 50, 0.36);
+     
+ }
+ 
+ 
+ .calcButtons,
+ .signButtons {
+     
+     background-color: #40403d ;
+     
+ }
+ .calcButtons:focus ,
+ .signButtons:focus {
+     
+     
+     background-color: #000 ;
+     outline: none;
+      box-shadow: inset 0px 0px 5px #ccc;
+     
+ }
+ 
+ 
+ .specialButtons {
+ 
+     background-color: #ff6666 ;
+ 
+ }
+ #plusSign {
+    position:absolute;
+    height: 103px; 
+    bottom:45px;
+    right: 27px;
      
      
  }
  
+ #num0 {
+     
+/*   so it starts in a new line, to make place for plus sign  */
+  clear:both;   
+     
+ }

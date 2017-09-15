@@ -8,6 +8,8 @@
  * 
  * add Comments
  * Check for duplicates
+ * make output textfield has a limited width,so if you type a lot of numbers It isn't getting out of it.
+ * Classes javascript + JQUery
  */
 
 class Calculator {
@@ -58,26 +60,29 @@ this.sign =['+'];
        this.totalNumber.push(this.currentNumber) ;
        this.currentNumber = '';
    }
-   
+   /***********************************/
    allClear (){
        this.sign = ['+'];
        this.totalNumber =[] ;
         this.currentNumber="" ;
        
    }
-    
+   /************************************************/ 
   entityClear(){
       
        this.currentNumber="" ; 
       
   }  
-  
+  /****************************************/
   addNumberOrDot(num){
-      
+      //test that there are less than 13 characters, else it is going to leave the screen
+      if(this.currentNumber.length <13) {
   this.currentNumber +="" +num; 
+      }
   
       
-  }   
+  }  
+  /******************************************/
    calculate(){
       let result = 0.0;
       this.totalNumber.push(this.currentNumber) ;
@@ -112,14 +117,35 @@ this.sign =['+'];
         }
         
     }
+   
+     
+    this.currentNumber="" +result; 
+     //make sure 12 number limit is respected
     
-    this.currentNumber= result;    
+        if (this.currentNumber.length > 12){
+            
+            this.currentNumber = 'out of memory' ;
+        
+            setTimeout(()=>{
+                
+              this.currentNumber=''; 
+               document.getElementById("outputText").innerHTML = myCalc.currentNumber;
+            },500) ;
+        }
+       
+        
+        
+       
      this.sign = ['+'];
        this.totalNumber =[] ;   
-  } 
+   
   
   
     
+         }
+         
+         
+         /*-***********/
 }
 /*****************************/
 
@@ -186,7 +212,8 @@ $('#equalsSign').on('click', ()=>{
 
 $('#dotSign').on('click', ()=>{
     if( !myCalc.currentNumber.includes('.') ) {
-  myCalc.addNumberOrDot(".");  
+  myCalc.addNumberOrDot(".");
+  document.getElementById("outputText").innerHTML = myCalc.currentNumber;  
     }
 });
 
